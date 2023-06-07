@@ -4,6 +4,7 @@
 #include "ui.h"
 #include "file.h"
 #include "gfx.h"
+#include <iomanip>
 
 namespace util
 {
@@ -132,7 +133,10 @@ namespace util
 
     inline std::string generatePathByTID(const uint64_t& tid)
     {
-        return fs::getWorkDir() + data::getTitleSafeNameByTID(tid) + " [" + std::to_string(tid) + "]" + "/";
+        std::stringstream stream;
+        stream << std::setfill('0') << std::setw(sizeof(uint64_t)*2) << std::hex << tid;
+        std::string hex_tid(stream.str());
+        return fs::getWorkDir() + data::getTitleSafeNameByTID(tid) + " [" + hex_tid + "]" + "/";
     }
 
     std::string getSizeString(const uint64_t& _size);
