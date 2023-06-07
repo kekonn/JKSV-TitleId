@@ -132,14 +132,15 @@ namespace util
 
     inline std::string generatePathByTID(const uint64_t& tid)
     {
-        return fs::getWorkDir() + data::getTitleSafeNameByTID(tid) + "/";
+        return fs::getWorkDir() + data::getTitleSafeNameByTID(tid) + " [" + std::to_string(tid) + "]" + "/";
     }
 
     std::string getSizeString(const uint64_t& _size);
 
     inline void createTitleDirectoryByTID(const uint64_t& tid)
     {
-        std::string makePath = fs::getWorkDir() + data::getTitleSafeNameByTID(tid);
+        //std::string makePath = fs::getWorkDir() + data::getTitleSafeNameByTID(tid);
+        std::string makePath = generatePathByTID(tid);
         mkdir(makePath.c_str(), 777);
     }
 

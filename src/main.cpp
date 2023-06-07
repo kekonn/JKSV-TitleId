@@ -20,6 +20,7 @@ extern "C"
         accountInitialize(AccountServiceType_Administrator);
         pmshellInitialize();
         socketInitializeDefault();
+        nxlinkStdio();
         pdmqryInitialize();
     }
 
